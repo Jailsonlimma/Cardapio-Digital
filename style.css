@@ -7,22 +7,22 @@
 
 /* ---------- Tokens de design ---------- */
 :root {
-  --bg: #fbf8f3;          /* papel */
+  --bg: #f7f7f7;
   --surface: #ffffff;
-  --ink: #1a1a1a;
-  --ink-soft: #3a3a3a;
-  --muted: #66625c;
-  --line: #e4ded4;
-  --accent: #c1121f;      /* vermelho ketchup */
-  --accent-hover: #9b0e18;
+  --ink: #3e3e3e;
+  --ink-soft: #505050;
+  --muted: #717171;
+  --line: #e6e6e6;
+  --accent: #ea1d2c;      /* vermelho de app de delivery */
+  --accent-hover: #c8101e;
   --open: #2f7d4a;
   --closed: #a8a29e;
 
-  --font-display: 'Zilla Slab', Georgia, serif;
-  --font-body: 'Public Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Nunito Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Nunito Sans', 'Segoe UI', system-ui, sans-serif;
 
-  --radius-sm: 6px;
-  --radius: 8px;
+  --radius-sm: 8px;
+  --radius: 12px;
   --shadow: 0 10px 30px -12px rgb(31 26 23 / .28);
 
   --topbar-h: 60px;
@@ -126,7 +126,7 @@ body.no-scroll { overflow: hidden; }
   top: 0;
   z-index: 30;
   height: var(--topbar-h);
-  background: var(--bg);
+  background: #fff;
   color: var(--ink);
   border-bottom: 1px solid var(--line);
 }
@@ -144,9 +144,9 @@ body.no-scroll { overflow: hidden; }
 .brand__name {
   display: inline-block;
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 24px;
-  letter-spacing: .01em;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -.01em;
 }
 
 .cart-button {
@@ -158,12 +158,12 @@ body.no-scroll { overflow: hidden; }
   padding: 0 12px;
   border: 0;
   border-radius: var(--radius-sm);
-  background: var(--ink);
+  background: var(--accent);
   color: #fff;
   font-weight: 700;
   transition: background-color .2s;
 }
-.cart-button:hover { background: #000; }
+.cart-button:hover { background: var(--accent-hover); }
 .cart-button__label { display: none; }
 .cart-button__count {
   display: grid;
@@ -172,8 +172,8 @@ body.no-scroll { overflow: hidden; }
   height: 22px;
   padding: 0 6px;
   border-radius: 4px;
-  background: var(--accent);
-  color: #fff;
+  background: #fff;
+  color: var(--accent);
   font-size: 12px;
   line-height: 1;
 }
@@ -200,8 +200,9 @@ body.no-scroll { overflow: hidden; }
   max-width: 16ch;
   font-family: var(--font-display);
   font-size: clamp(2rem, 7vw, 3.75rem);
-  font-weight: 700;
-  line-height: 1.02;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -.02em;
   text-shadow: 0 2px 12px rgb(0 0 0 / .35);
 }
 
@@ -288,12 +289,13 @@ body.no-scroll { overflow: hidden; }
   align-items: baseline;
   gap: 2px 14px;
   padding-bottom: 10px;
-  border-bottom: 2px solid var(--ink);
+  border-bottom: 0;
 }
 .menu-section__title {
   font-family: var(--font-display);
-  font-size: clamp(1.7rem, 4vw, 2.2rem);
-  font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -.01em;
   line-height: 1.1;
 }
 .menu-section__desc { color: var(--muted); font-size: 15px; }
@@ -305,8 +307,15 @@ body.no-scroll { overflow: hidden; }
   display: grid;
   grid-template-columns: 1fr 96px;
   gap: 14px;
-  padding-block: 16px;
-  border-bottom: 1px dashed var(--line);
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: box-shadow .2s, border-color .2s;
+}
+@media (hover: hover) {
+  .product:hover { border-color: #d4d4d4; box-shadow: 0 4px 16px rgb(0 0 0 / .08); }
 }
 
 .product__media {
@@ -341,9 +350,9 @@ body.no-scroll { overflow: hidden; }
 
 .product__name {
   font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.15;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
 }
 
 .product__desc {
@@ -566,10 +575,10 @@ body.no-scroll { overflow: hidden; }
   padding: 0 20px;
   border: 0;
   border-radius: var(--radius-sm);
-  background: var(--ink);
+  background: var(--accent);
   color: #fff;
   font-weight: 700;
-  box-shadow: 0 10px 24px -10px rgb(31 26 23 / .6);
+  box-shadow: 0 10px 24px -10px rgb(234 29 44 / .6);
   transform: translateY(150%);
   visibility: hidden;
   transition: transform .3s ease, visibility 0s linear .3s;
@@ -607,8 +616,8 @@ body.no-scroll { overflow: hidden; }
 
   .cart-button__label { display: inline; }
 
-  .product-grid { grid-template-columns: repeat(2, 1fr); column-gap: 40px; }
-  .product { grid-template-columns: 1fr 120px; gap: 18px; padding-block: 20px; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); column-gap: 16px; }
+  .product { grid-template-columns: 1fr 120px; gap: 18px; padding: 18px; }
 
   .cart-bar { display: none; }
   .toast { bottom: 32px; }
