@@ -21,21 +21,20 @@ function fillStoreInfo() {
 /* ---------- Cardápio ---------- */
 
 function productCard(product) {
-  const tag = product.tag ? `<span class="product__tag">${product.tag}</span>` : '';
+  const tag = product.tag ? `<p class="product__tag">${product.tag}</p>` : '';
   return `
     <article class="product" data-id="${product.id}">
       <div class="product__media">
         <img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async" width="640" height="480">
-        ${tag}
       </div>
       <div class="product__body">
+        ${tag}
         <h3 class="product__name">${product.name}</h3>
         <p class="product__desc">${product.description}</p>
         <div class="product__footer">
           <span class="product__price">${formatPrice(product.price)}</span>
           <button class="add-button" type="button" data-add="${product.id}" aria-label="Adicionar ${product.name} ao pedido">
             <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
-            <span>Adicionar</span>
           </button>
         </div>
       </div>
@@ -100,7 +99,7 @@ function updateStoreStatus() {
   const open = now.getDay() !== 1 && now.getHours() >= 11 && now.getHours() < 23;
   const status = $('#store-status');
   status.classList.toggle('is-open', open);
-  status.setAttribute('title', open ? 'Aberto agora' : 'Fechado agora');
+  $('#store-status-text').textContent = open ? 'Aberto agora' : 'Fechado agora';
 }
 
 /* ---------- Carrinho ---------- */
