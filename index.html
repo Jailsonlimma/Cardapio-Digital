@@ -3,110 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casa Brasa · Cardápio Digital</title>
-  <meta name="description" content="Cardápio digital da Casa Brasa: lanches, refeições, doces e bebidas. Monte seu pedido e envie pelo WhatsApp.">
-  <meta name="theme-color" content="#ffffff">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://images.unsplash.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <title>Casa Brasa - Cardápio</title>
+  <link rel="icon" href="logo.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="skip-link" href="#cardapio">Pular para o cardápio</a>
 
-  <!-- Barra superior -->
-  <header class="topbar">
-    <div class="topbar__inner wrap">
-      <a class="brand" href="#inicio" aria-label="Casa Brasa, voltar ao início">
-        <img class="brand__logo" src="logo.svg" alt="" width="36" height="36">
-        <span class="brand__name" data-store="name">Casa Brasa</span>
+  <header class="header">
+    <div class="container header-content">
+      <a href="#" class="logo">
+        <img src="logo.svg" alt="Logo">
+        Casa Brasa
       </a>
-      <button class="cart-button" id="cart-open" type="button" aria-controls="cart" aria-expanded="false">
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M6 7h12l-1 12H7L6 7Zm3 0a3 3 0 0 1 6 0"/></svg>
-        <span class="cart-button__label">Pedido</span>
-        <span class="cart-button__count" id="cart-count" aria-label="itens no pedido">0</span>
+      <button id="btn-carrinho" class="btn-carrinho">
+        Pedido <span id="qtd-carrinho">0</span>
       </button>
     </div>
   </header>
 
-  <!-- Cabeçalho da loja -->
-  <section class="hero" id="inicio">
-    <div class="hero__inner wrap">
-      <div class="hero__text">
-        <h1 class="hero__title" data-store="tagline">Cozinha de rua, tempero de casa</h1>
-        <p class="hero__lead">Lanche na brasa, prato feito, doce da casa. Escolha aqui e mande o pedido pelo WhatsApp.</p>
-        <ul class="hero__facts">
-          <li class="status" id="store-status"><span class="status__dot" aria-hidden="true"></span><span id="store-status-text">Aberto agora</span></li>
-          <li data-store="hours"></li>
-          <li>Entrega em <span data-store="deliveryTime"></span></li>
-          <li data-store="address"></li>
-        </ul>
+  <section class="banner">
+    <div class="container">
+      <h1>Cozinha de rua, tempero de casa</h1>
+      <p>Lanche na brasa, prato feito, doce da casa. Escolha aqui e mande o pedido pelo WhatsApp.</p>
+      <div class="infos">
+        <span id="status">Aberto agora</span>
+        <span>Ter a Dom - 11h às 23h</span>
+        <span>Entrega em 30-45 min</span>
+        <span>Rua das Palmeiras, 120 - Centro</span>
       </div>
     </div>
   </section>
 
-  <!-- Navegação por categorias (gerada pelo script.js) -->
-  <nav class="category-nav" aria-label="Categorias do cardápio">
-    <ul class="category-nav__list wrap" id="category-nav"></ul>
+  <nav class="menu-categorias">
+    <div class="container" id="categorias"></div>
   </nav>
 
-  <!-- Cardápio (gerado pelo script.js a partir de menu-data.js) -->
-  <main class="menu wrap" id="cardapio" tabindex="-1"></main>
+  <main class="container" id="cardapio"></main>
 
   <footer class="footer">
-    <div class="footer__inner wrap">
-      <div>
-        <p class="footer__brand" data-store="name">Casa Brasa</p>
-        <p data-store="address"></p>
-        <p data-store="hours"></p>
-      </div>
-      <p class="footer__note">Projeto de portfólio · dados e preços fictícios.</p>
-    </div>
+    <p>Casa Brasa - Rua das Palmeiras, 120 - Centro</p>
+    <p>Projeto de portfólio, os dados e preços são fictícios.</p>
   </footer>
 
-  <!-- Carrinho (gaveta lateral) -->
-  <div class="overlay" id="cart-overlay" hidden></div>
-  <aside class="cart" id="cart" aria-label="Seu pedido" aria-hidden="true">
-    <header class="cart__header">
-      <h2 class="cart__title">Seu pedido</h2>
-      <button class="icon-button" id="cart-close" type="button" aria-label="Fechar pedido">
-        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
-      </button>
-    </header>
+  <div id="fundo-escuro" class="fundo-escuro"></div>
 
-    <div class="cart__body">
-      <div class="cart__empty" id="cart-empty">
-        <p class="cart__empty-title">Seu pedido está vazio</p>
-        <p>Adicione itens do cardápio para começar.</p>
-      </div>
-      <ul class="cart__items" id="cart-items"></ul>
-      <label class="cart__notes" id="cart-notes-wrap">
-        <span>Observações</span>
-        <textarea id="cart-notes" rows="2" maxlength="300" placeholder="Ex.: sem cebola, sabor do refrigerante, troco para R$ 50"></textarea>
-      </label>
+  <div id="carrinho" class="carrinho">
+    <div class="carrinho-topo">
+      <h2>Seu pedido</h2>
+      <button id="fechar-carrinho" class="btn-fechar">X</button>
     </div>
 
-    <footer class="cart__footer">
-      <div class="cart__total">
-        <span>Total</span>
-        <strong id="cart-total">R$ 0,00</strong>
-      </div>
-      <button class="btn btn--primary btn--block" id="cart-checkout" type="button" disabled>Enviar pedido pelo WhatsApp</button>
-      <button class="cart__clear" id="cart-clear" type="button">Limpar pedido</button>
-    </footer>
-  </aside>
+    <p id="carrinho-vazio">Seu pedido está vazio.</p>
+    <div id="itens-carrinho"></div>
 
-  <!-- Barra de pedido (aparece no celular quando há itens) -->
-  <button class="cart-bar" id="cart-bar" type="button" aria-controls="cart">
-    <span id="cart-bar-count">0 itens</span>
-    <span>Ver pedido</span>
-    <span class="cart-bar__total" id="cart-bar-total">R$ 0,00</span>
-  </button>
+    <textarea id="observacoes" placeholder="Observações (ex: sem cebola)"></textarea>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="carrinho-total">
+      Total: <strong id="total">R$ 0,00</strong>
+    </div>
+    <button id="btn-enviar" class="btn-enviar">Enviar pedido pelo WhatsApp</button>
+    <button id="btn-limpar" class="btn-limpar">Limpar pedido</button>
+  </div>
 
   <script src="menu-data.js"></script>
   <script src="script.js"></script>
