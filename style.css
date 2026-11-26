@@ -1,25 +1,20 @@
-/* =========================================================
-   Cardápio Digital · Casa Brasa
-   Direção visual: cardápio impresso de casa de lanche.
-   Papel creme, tinta escura, vermelho de brasa, fonte serifada de letreiro.
-   Organização: tokens → base → componentes → seções → responsivo
-   ========================================================= */
+/* Cardapio Casa Brasa - estilos */
 
 /* ---------- Tokens de design ---------- */
 :root {
-  --bg: #f7f7f7;
+  --bg: #f1f1f1;
   --surface: #ffffff;
-  --ink: #3e3e3e;
+  --ink: #333;
   --ink-soft: #505050;
   --muted: #717171;
   --line: #e6e6e6;
-  --accent: #ea1d2c;      /* vermelho de app de delivery */
-  --accent-hover: #c8101e;
+  --accent: #e63946;
+  --accent-hover: #c92a37;
   --open: #2f7d4a;
   --closed: #a8a29e;
 
-  --font-display: 'Nunito Sans', 'Segoe UI', system-ui, sans-serif;
-  --font-body: 'Nunito Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Poppins', Arial, sans-serif;
+  --font-body: 'Poppins', Arial, sans-serif;
 
   --radius-sm: 0;
   --radius: 0;
@@ -126,9 +121,9 @@ body.no-scroll { overflow: hidden; }
   top: 0;
   z-index: 30;
   height: var(--topbar-h);
-  background: #fff;
-  color: var(--ink);
-  border-bottom: 1px solid var(--line);
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .topbar__inner {
@@ -144,9 +139,8 @@ body.no-scroll { overflow: hidden; }
 .brand__name {
   display: inline-block;
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 22px;
-  letter-spacing: -.01em;
 }
 
 .cart-button {
@@ -158,12 +152,12 @@ body.no-scroll { overflow: hidden; }
   padding: 0 12px;
   border: 0;
   border-radius: var(--radius-sm);
-  background: var(--accent);
-  color: #fff;
+  background: #fff;
+  color: var(--accent);
   font-weight: 700;
   transition: background-color .2s;
 }
-.cart-button:hover { background: var(--accent-hover); }
+.cart-button:hover { background: #eee; }
 .cart-button__label { display: none; }
 .cart-button__count {
   display: grid;
@@ -172,8 +166,8 @@ body.no-scroll { overflow: hidden; }
   height: 22px;
   padding: 0 6px;
   border-radius: 0;
-  background: #fff;
-  color: var(--accent);
+  background: var(--accent);
+  color: #fff;
   font-size: 12px;
   line-height: 1;
 }
@@ -194,27 +188,27 @@ body.no-scroll { overflow: hidden; }
     #2a2420;
 }
 
-.hero__inner { padding-block: 28px 26px; }
+.hero__inner { padding-block: 40px; text-align: center; }
 
 .hero__title {
-  max-width: 16ch;
+  margin: 0 auto;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 7vw, 3.75rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -.02em;
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
   text-shadow: 0 2px 12px rgb(0 0 0 / .35);
 }
 
 .hero__lead {
   max-width: 40ch;
-  margin-top: 10px;
-  color: rgb(255 255 255 / .88);
+  margin: 10px auto 0;
+  color: #ddd;
 }
 
 .hero__facts {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
   margin-top: 18px;
   font-size: 14px;
@@ -287,35 +281,44 @@ body.no-scroll { overflow: hidden; }
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 2px 14px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   padding-bottom: 10px;
-  border-bottom: 0;
 }
 .menu-section__title {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 4vw, 2rem);
-  font-weight: 800;
-  letter-spacing: -.01em;
+  font-weight: 700;
   line-height: 1.1;
+}
+.menu-section__title::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  margin: 8px auto 0;
+  background: var(--accent);
 }
 .menu-section__desc { color: var(--muted); font-size: 15px; }
 
 .product-grid { display: grid; }
 
-/* Item do cardápio: linha de cardápio impresso, texto à esquerda e foto à direita */
+/* card do produto */
 .product {
   display: grid;
   grid-template-columns: 1fr 96px;
   gap: 14px;
   margin-top: 12px;
   padding: 14px;
-  border: 1px solid var(--line);
+  border: 0;
   border-radius: var(--radius);
   background: var(--surface);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
   transition: box-shadow .2s, border-color .2s;
 }
 @media (hover: hover) {
-  .product:hover { border-color: #d4d4d4; box-shadow: 0 4px 16px rgb(0 0 0 / .08); }
+  .product:hover { box-shadow: 0 0 15px rgba(0,0,0,0.2); }
 }
 
 .product__media {
@@ -625,18 +628,7 @@ body.no-scroll { overflow: hidden; }
 }
 
 @media (min-width: 900px) {
-  /* Desktop: texto em fundo liso à esquerda, foto ocupando a metade direita */
-  .hero { background: #141414; overflow: hidden; }
-  .hero::after {
-    content: "";
-    position: absolute;
-    inset: 0 0 0 46%;
-    background:
-      linear-gradient(90deg, #141414 0%, rgb(20 20 20 / 0) 30%),
-      url("https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1400&q=80") 40% 85% / cover no-repeat;
-  }
-  .hero__inner { position: relative; z-index: 1; padding-block: 88px 80px; }
-  .hero__text { max-width: 560px; }
+  .hero__inner { padding-block: 80px; }
   .hero__lead { font-size: 19px; }
   .hero__facts { margin-top: 28px; font-size: 15px; }
 
