@@ -21,8 +21,8 @@
   --font-display: 'Nunito Sans', 'Segoe UI', system-ui, sans-serif;
   --font-body: 'Nunito Sans', 'Segoe UI', system-ui, sans-serif;
 
-  --radius-sm: 8px;
-  --radius: 12px;
+  --radius-sm: 0;
+  --radius: 0;
   --shadow: 0 10px 30px -12px rgb(31 26 23 / .28);
 
   --topbar-h: 60px;
@@ -171,7 +171,7 @@ body.no-scroll { overflow: hidden; }
   min-width: 22px;
   height: 22px;
   padding: 0 6px;
-  border-radius: 4px;
+  border-radius: 0;
   background: #fff;
   color: var(--accent);
   font-size: 12px;
